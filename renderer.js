@@ -7,7 +7,7 @@ const shortcuts = document.getElementById('shortcuts');
 // 다국어 지원
 const translations = {
     ko: {
-        appTitle: '투명 브라우저',
+        appTitle: 'Peekaboo',
         opacity: '투명도:',
         alwaysOnTop: '📌 항상 위',
         alwaysOnTopOff: '📍 항상 위 해제',
@@ -16,7 +16,7 @@ const translations = {
         shortcuts: '<strong>단축키:</strong><br>Ctrl+Up/Down: 투명도 조절<br>Ctrl+T: 항상 위 토글<br>Ctrl+Q: 종료'
     },
     en: {
-        appTitle: 'Transparent Browser',
+        appTitle: 'Peekaboo',
         opacity: 'Opacity:',
         alwaysOnTop: '📌 Always on top',
         alwaysOnTopOff: '📍 Pin off',

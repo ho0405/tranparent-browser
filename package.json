@@ -5,26 +5,35 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder"
+    "build": "electron-builder --publish never"
   },
   "build": {
-    "appId": "com.transparent-browser",
-    "productName": "투명 브라우저",
+    "appId": "com.peekaboo",
+    "productName": "Peekaboo",
     "directories": {
       "output": "dist"
     },
     "win": {
-      "target": "nsis"
+      "target": "nsis",
+      "icon": "transparent_browser.ico"
     },
     "mac": {
-      "target": "dmg",
-      "category": "public.app-category.utilities"
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "category": "public.app-category.utilities",
+      "icon": "build/icon.png"
     },
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true
-    },
-    "icon": "transparent_browser.ico"
+    }
   },
   "devDependencies": {
     "electron": "^28.0.0",
