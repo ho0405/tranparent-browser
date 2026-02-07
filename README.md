@@ -20,8 +20,8 @@ A desktop app that displays web pages in a semi-transparent window, so you can s
 
 | Platform | File |
 |----------|------|
-| **macOS** (Apple Silicon) | [transparent-browser-1.0.0-arm64.dmg](https://github.com/ho0405/transparent-browser/releases) |
-| **Windows** | [transparent-browser Setup 1.0.0.exe](https://github.com/ho0405/transparent-browser/releases) |
+| **macOS** (Apple Silicon) | [transparent-browser-1.0.0-arm64.dmg](https://github.com/ho0405/tranparent-browser/releases) |
+| **Windows** | [transparent-browser Setup 1.0.0.exe](https://github.com/ho0405/tranparent-browser/releases) |
 
 > **Note:** Mac용은 Mac에서, Windows용은 Windows에서 빌드해야 합니다.  
 > GitHub Releases에서 최신 버전을 확인하세요.
@@ -63,8 +63,8 @@ A desktop app that displays web pages in a semi-transparent window, so you can s
 
 ### Setup & Run
 ```bash
-git clone https://github.com/ho0405/transparent-browser.git
-cd transparent-browser
+git clone https://github.com/ho0405/tranparent-browser.git
+cd tranparent-browser
 npm install
 npm start
 ```
@@ -80,18 +80,17 @@ npm run build
 ### Deploy to GitHub Releases
 
 1. 코드를 GitHub 저장소에 push합니다.
-2. `README.md`의 `ho0405`을 본인 GitHub 아이디로 바꿉니다.
-3. **Releases → Create a new release** 클릭
-4. 태그 입력 (예: `v1.0.0`)
-5. `dist/`에서 생성된 `.dmg`(Mac) 또는 `.exe`(Windows) 파일을 업로드
-6. Publish release
+2. **Releases → Create a new release** 클릭
+3. 태그 입력 (예: `v1.0.0`)
+4. `dist/`에서 생성된 `.dmg`(Mac) 또는 `.exe`(Windows) 파일을 업로드
+5. Publish release
 
 ---
 
 ## 📁 Project structure
 
 ```
-transparent-browser/
+tranparent-browser/
 ├── main.js          # Electron main process
 ├── preload.js       # Secure preload script
 ├── renderer.js      # Renderer logic & i18n
