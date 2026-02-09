@@ -1,18 +1,35 @@
 # Peekaboo
 
-웹 페이지를 반투명 창으로 띄워, 뒤에 있는 창과 함께 보면서 작업할 수 있는 데스크톱 앱입니다.
+**See through the web.** 웹 페이지를 반투명 창으로 띄워, 뒤에 있는 창과 함께 보면서 작업할 수 있는 데스크톱 앱입니다.
 
-A desktop app that displays web pages in a semi-transparent window, so you can see and work with windows behind it.
+A desktop app that displays web pages in a semi-transparent, always-on-top window. View references while coding, watch videos while taking notes—multitasking made easier.
 
 ---
 
 ## ✨ Features / 주요 기능
 
-- **투명 창** – Opacity를 조절해 창을 반투명하게 사용
-- **항상 위** – Always on top으로 다른 창 위에 고정
-- **한/영 언어 전환** – Korean/English toggle (한/EN 버튼)
-- **단축키 지원** – Keyboard shortcuts for quick control
-- **보안 강화** – Context isolation, URL validation (http/https only)
+| Feature | Description |
+|---------|-------------|
+| **투명 창** | Opacity를 조절해 창을 반투명하게 사용 / Adjust opacity for see-through effect |
+| **항상 위** | Always on top으로 다른 창 위에 고정 / Pin above other windows |
+| **한/영 지원** | Korean/English toggle (한/EN 버튼) / Language toggle |
+| **단축키** | Keyboard shortcuts for quick control / 빠른 조작 |
+| **슬라이더 동기화** | 단축키로 투명도 변경 시 상단 슬라이더 자동 반영 / Slider syncs with shortcut changes |
+| **보안** | Context isolation, URL validation (http/https only) / 컨텍스트 격리, URL 검증 |
+
+---
+
+## ⌨️ Shortcuts / 단축키
+
+| Shortcut (Mac) | Shortcut (Windows) | Action |
+|----------------|-------------------|--------|
+| `⌘ + ↑` | `Ctrl + ↑` | 투명도 증가 / Increase opacity |
+| `⌘ + ↓` | `Ctrl + ↓` | 투명도 감소 / Decrease opacity |
+| `⌘ + 1` | `Ctrl + 1` | 투명도 프리셋 (약함 30%) / Opacity preset (low) |
+| `⌘ + 2` | `Ctrl + 2` | 투명도 프리셋 (중간 60%) / Opacity preset (mid) |
+| `⌘ + 3` | `Ctrl + 3` | 투명도 프리셋 (강함 100%) / Opacity preset (high) |
+| `⌘ + T` | `Ctrl + T` | 항상 위 토글 / Toggle always on top |
+| `⌘ + Q` | `Ctrl + Q` | 종료 / Quit |
 
 ---
 
@@ -22,10 +39,10 @@ A desktop app that displays web pages in a semi-transparent window, so you can s
 |----------|------|
 | **macOS** (Intel x64) | [Peekaboo-1.0.0.dmg](https://github.com/ho0405/tranparent-browser/releases) |
 | **macOS** (Apple Silicon) | [Peekaboo-1.0.0-arm64.dmg](https://github.com/ho0405/tranparent-browser/releases) |
-| **Windows** | [Peekaboo Setup 1.0.0.exe](https://github.com/ho0405/tranparent-browser/releases) |
+| **Windows** | Coming soon / 준비중 |
 
-> **Note:** Mac용은 Mac에서, Windows용은 Windows에서 빌드해야 합니다.  
-> GitHub Releases에서 최신 버전을 확인하세요.
+> **Mac:** Apple Developer approval is pending. After installation, right-click the app and select **Open** to run.  
+> **맥:** Apple Developer 승인이 완료되지 않았습니다. 설치 후 앱을 오른쪽 클릭 → **열기**로 실행해 주세요.
 
 ---
 
@@ -36,23 +53,11 @@ A desktop app that displays web pages in a semi-transparent window, so you can s
 2. 파일을 열고 **Peekaboo** 앱을 Applications 폴더로 드래그합니다.
 3. Applications에서 앱을 실행합니다.  
    - 처음 실행 시 "신뢰할 수 없는 개발자" 경고가 뜨면:  
-     **시스템 설정 → 개인 정보 보호 및 보안**에서 "그래도 열기"를 선택합니다.
+     **오른쪽 클릭 → 열기** 또는 **시스템 설정 → 개인 정보 보호 및 보안**에서 "그래도 열기"를 선택합니다.
 
 ### Windows
-1. `.exe` 설치 파일을 다운로드합니다.
+1. `.exe` 설치 파일을 다운로드합니다. (준비중)
 2. 실행 후 설치 마법사를 진행합니다.
-3. 설치가 끝나면 시작 메뉴 또는 바탕화면에서 앱을 실행합니다.
-
----
-
-## ⌨️ Shortcuts / 단축키
-
-| Shortcut | Action |
-|----------|--------|
-| `Ctrl+Up` | 투명도 증가 / Increase opacity |
-| `Ctrl+Down` | 투명도 감소 / Decrease opacity |
-| `Ctrl+T` | 항상 위 토글 / Toggle always on top |
-| `Ctrl+Q` | 종료 / Quit |
 
 ---
 
@@ -75,30 +80,34 @@ npm start
 npm run build
 ```
 
-- **Mac에서 빌드** → `dist/` 폴더에 `.dmg` 생성
+- **Mac에서 빌드** → `dist/` 폴더에 `.dmg` 생성 (x64, arm64)
 - **Windows에서 빌드** → `dist/` 폴더에 `.exe` 생성
-
-### Deploy to GitHub Releases
-
-1. 코드를 GitHub 저장소에 push합니다.
-2. **Releases → Create a new release** 클릭
-3. 태그 입력 (예: `v1.0.0`)
-4. `dist/`에서 생성된 `.dmg`(Mac) 또는 `.exe`(Windows) 파일을 업로드
-5. Publish release
 
 ---
 
-## 📁 Project structure
+## 📁 Project Structure / 프로젝트 구조
 
 ```
-tranparent-browser/
-├── main.js          # Electron main process
-├── preload.js       # Secure preload script
-├── renderer.js      # Renderer logic & i18n
-├── index.html       # UI
-├── package.json
-└── transparent_browser.ico
+transparent-browser/
+├── main.js           # Electron main process, shortcuts, IPC
+├── preload.js        # Secure preload (contextBridge)
+├── renderer.js       # Renderer logic, i18n, slider
+├── index.html        # UI
+├── peekaboo.png      # App icon source
+├── build/icon.png    # Mac app icon (1024x1024)
+├── transparent_browser.ico  # Windows icon
+├── docs/             # Static docs for GitHub Pages
+└── landing/          # Simple HTML landing
 ```
+
+---
+
+## 📄 Related Projects / 관련 프로젝트
+
+| Project | Description |
+|---------|-------------|
+| [peekaboo-landing](https://github.com/ho0405/peekaboo-landing) | Next.js landing page with demo video, auto-download |
+| [tranparent-browser](https://github.com/ho0405/tranparent-browser) | This app (Electron) |
 
 ---
 

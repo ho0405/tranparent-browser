@@ -34,12 +34,20 @@ function createWindow() {
     });
 }
 
+function notifyOpacityChanged(opacity) {
+    if (mainWindow && !mainWindow.isDestroyed()) {
+        mainWindow.webContents.send('opacity-changed', opacity);
+    }
+}
+
 function registerShortcuts() {
     // Ctrl+Up: 투명도 증가
     globalShortcut.register('CommandOrControl+Up', () => {
         if (mainWindow) {
             let opacity = mainWindow.getOpacity();
-            mainWindow.setOpacity(Math.min(1.0, opacity + 0.05));
+            opacity = Math.min(1.0, opacity + 0.05);
+            mainWindow.setOpacity(opacity);
+            notifyOpacityChanged(opacity);
         }
     });
 
@@ -47,7 +55,9 @@ function registerShortcuts() {
     globalShortcut.register('CommandOrControl+Down', () => {
         if (mainWindow) {
             let opacity = mainWindow.getOpacity();
-            mainWindow.setOpacity(Math.max(0.1, opacity - 0.05));
+            opacity = Math.max(0.1, opacity - 0.05);
+            mainWindow.setOpacity(opacity);
+            notifyOpacityChanged(opacity);
         }
     });
 
@@ -56,6 +66,30 @@ function registerShortcuts() {
         if (mainWindow) {
             const isAlwaysOnTop = mainWindow.isAlwaysOnTop();
             mainWindow.setAlwaysOnTop(!isAlwaysOnTop);
+        }
+    });
+
+    // Ctrl+1: 가장 투명 (약한 opacity)
+    globalShortcut.register('CommandOrControl+1', () => {
+        if (mainWindow) {
+            mainWindow.setOpacity(0.3);
+            notifyOpacityChanged(0.3);
+        }
+    });
+
+    // Ctrl+2: 중간 opacity
+    globalShortcut.register('CommandOrControl+2', () => {
+        if (mainWindow) {
+            mainWindow.setOpacity(0.6);
+            notifyOpacityChanged(0.6);
+        }
+    });
+
+    // Ctrl+3: 가장 불투명 (강한 opacity)
+    globalShortcut.register('CommandOrControl+3', () => {
+        if (mainWindow) {
+            mainWindow.setOpacity(1.0);
+            notifyOpacityChanged(1.0);
         }
     });
 

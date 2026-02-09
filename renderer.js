@@ -4,6 +4,8 @@ const opacitySlider = document.getElementById('opacity-slider');
 const opacityValue = document.getElementById('opacity-value');
 const shortcuts = document.getElementById('shortcuts');
 
+const mod = window.electronAPI?.modKey || 'Ctrl';
+
 // 다국어 지원
 const translations = {
     ko: {
@@ -13,7 +15,7 @@ const translations = {
         alwaysOnTopOff: '📍 항상 위 해제',
         urlPlaceholder: 'URL 입력 (예: https://chat.openai.com)',
         go: '이동',
-        shortcuts: '<strong>단축키:</strong><br>Ctrl+Up/Down: 투명도 조절<br>Ctrl+T: 항상 위 토글<br>Ctrl+Q: 종료'
+        shortcuts: `<strong>단축키:</strong><br>${mod}+↑/↓: 투명도 조절<br>${mod}+1/2/3: 투명도 프리셋 (약함/중간/강함)<br>${mod}+T: 항상 위 토글<br>${mod}+Q: 종료`
     },
     en: {
         appTitle: 'Peekaboo',
@@ -22,7 +24,7 @@ const translations = {
         alwaysOnTopOff: '📍 Pin off',
         urlPlaceholder: 'Enter URL (e.g. https://chat.openai.com)',
         go: 'Go',
-        shortcuts: '<strong>Shortcuts:</strong><br>Ctrl+Up/Down: Adjust opacity<br>Ctrl+T: Toggle always on top<br>Ctrl+Q: Quit'
+        shortcuts: `<strong>Shortcuts:</strong><br>${mod}+↑/↓: Adjust opacity<br>${mod}+1/2/3: Opacity preset (low/mid/high)<br>${mod}+T: Toggle always on top<br>${mod}+Q: Quit`
     }
 };
 
@@ -104,11 +106,23 @@ webview.addEventListener('did-navigate-in-page', (e) => {
     urlInput.value = e.url;
 });
 
-// 투명도 조절
+// 슬라이더 ↔ 투명도 동기화
+function syncSliderToOpacity(opacity) {
+    const percent = Math.round(opacity * 100);
+    opacitySlider.value = percent;
+    opacityValue.textContent = percent + '%';
+}
+
+// 투명도 조절 (슬라이더)
 opacitySlider.addEventListener('input', (e) => {
     const opacity = e.target.value / 100;
     opacityValue.textContent = e.target.value + '%';
     window.electronAPI.setOpacity(opacity);
+});
+
+// 단축키로 투명도 변경 시 슬라이더 동기화
+window.electronAPI.onOpacityChanged((opacity) => {
+    syncSliderToOpacity(opacity);
 });
 
 // 항상 위 토글
